@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZeroOne.ViewModel
 {
-    class ViewModelMain
+    class MainWindowViewModel
     {
+
     }
 }

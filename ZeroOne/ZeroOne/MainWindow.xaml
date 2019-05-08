@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:ZeroOne"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+
+   
+
+    <Grid DataContext="">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
