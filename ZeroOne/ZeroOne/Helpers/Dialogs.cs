@@ -28,9 +28,9 @@ namespace ZeroOne.Helpers
 
                 if (open.ShowDialog(owner) == System.Windows.Forms.DialogResult.OK)
                     files = open.FileNames;
-
-                return files;
             }
+
+            return files;
         }
 
 
