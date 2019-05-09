@@ -57,7 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\Dialogs.cs" />
-    <Compile Include="Model\test.cs" />
+    <Compile Include="Model\FileReader.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\test.cs" />
     <Page Include="MainWindow.xaml">
