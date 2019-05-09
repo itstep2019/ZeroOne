@@ -11,6 +11,8 @@ namespace ZeroOne.Helpers
     {
         static string[] OpenFileDialog(System.Windows.Forms.IWin32Window owner = null)
         {
+            string[] files = Array.Empty<string>();
+
             using (var open = new System.Windows.Forms.OpenFileDialog())
             {
                 open.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -24,9 +26,10 @@ namespace ZeroOne.Helpers
                 open.CheckPathExists = true;
                 open.CheckFileExists = true;
 
-                open.ShowDialog(owner);
+                if (open.ShowDialog(owner) == System.Windows.Forms.DialogResult.OK)
+                    files = open.FileNames;
 
-                return open.FileNames;
+                return files;
             }
         }
 

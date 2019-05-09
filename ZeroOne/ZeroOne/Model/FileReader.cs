@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZeroOne.Model
 {
-    class test
+    class FileReader
     {
+
+
     }
 }
