@@ -8,5 +8,21 @@ namespace ZeroOne.ViewModel
 {
     class ViewModelMain
     {
+        #region variable
+
+
+
+        #endregion variable
+
+
+        #region Functions
+
+        #endregion Functions
+
+
+        #region Comandas
+
+
+        #endregion Comands
     }
 }
