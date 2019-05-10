@@ -17,12 +17,21 @@
                 <MenuItem Header="{DynamicResource menu_file_new}"/>
                 <MenuItem Header="{DynamicResource menu_file_open}"/>
                 <MenuItem Header="{DynamicResource menu_file_open_t}"/>
+                <Separator/>
                 <MenuItem Header="{DynamicResource menu_file_save}"/>
-                <MenuItem Header="{DynamicResource menu_file_new}"/>
-                <MenuItem Header="{DynamicResource menu_file_new}"/>
-                <MenuItem Header="{DynamicResource menu_file_new}"/>
+                <MenuItem Header="{DynamicResource menu_file_save_as}"/>
+                <MenuItem Header="{DynamicResource menu_file_save_all}"/>
+
             </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_search}" />
+            <MenuItem  Header="{DynamicResource menu_search}" >
+                <MenuItem Header="{DynamicResource menu_search_next}"/>
+                <MenuItem Header="{DynamicResource menu_search_beak}"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource menu_search_and_reples}"/>
+                <MenuItem Header="{DynamicResource menu_search_and_select}"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource menu_search_go_to_selected}"/>
+            </MenuItem>
             <MenuItem  Header="{DynamicResource menu_ophens}" />
             <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
         </Menu>
