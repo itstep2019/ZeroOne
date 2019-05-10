@@ -5,15 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZeroOne"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        
+        
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
        
-        <Menu Grid.Row="0">
-            <MenuItem Header="{DynamicResource menu_file}">
+        <Menu  Grid.Row="0">
+            <MenuItem  Header="{DynamicResource menu_file}">
                 <MenuItem Header="{DynamicResource menu_file_new}"/>
                 <MenuItem Header="{DynamicResource menu_file_open}"/>
                 <MenuItem Header="{DynamicResource menu_file_open_t}"/>
@@ -32,9 +42,48 @@
                 <Separator/>
                 <MenuItem Header="{DynamicResource menu_search_go_to_selected}"/>
             </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_ophens}" />
-            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+            <MenuItem  Header="{DynamicResource menu_ophens}" >
+                <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+            </MenuItem>
+
         </Menu>
-     
+
+        <Grid Grid.Row="1">
+
+          
+
+            <TabControl x:Name="TabWindow">
+                <TabItem >
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <Label Content="aaaaaaaaa"/>
+                                <Button>X</Button>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+                    
+                    <Grid>
+                        
+                    </Grid>
+                </TabItem>
+
+                <TabItem >
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <Label Content="aaaaaaaaa"/>
+                                <Button>X</Button>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+
+                    <Grid>
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
     </Grid>
 </Window>
