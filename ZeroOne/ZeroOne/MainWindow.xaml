@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="181*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
+        <Menu Grid.Row="0" Grid.ColumnSpan="2">
             <MenuItem Header="File"/>
         </Menu>
     </Grid>
