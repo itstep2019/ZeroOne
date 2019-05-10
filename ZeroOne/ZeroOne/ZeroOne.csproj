@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\test.cs" />
+    <Compile Include="Resurses\OpenerFile.cs" />
+    <Compile Include="ViewModel\SaveConvecter.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="View\test.cs" />
     <Page Include="MainWindow.xaml">
@@ -97,8 +99,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resurses\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
