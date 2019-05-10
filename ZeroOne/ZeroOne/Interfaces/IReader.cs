@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZeroOne.Model
+namespace ZeroOne.Interfaces
 {
-    class FileReader
+    interface IReader
     {
-
-
+        Interfaces.IDocument Read(string path);
     }
 }
