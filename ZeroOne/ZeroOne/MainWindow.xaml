@@ -11,8 +11,21 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+       
         <Menu Grid.Row="0">
-            <MenuItem Header="File"/>
+            <MenuItem Header="{DynamicResource menu_file}">
+                <MenuItem Header="{DynamicResource menu_file_new}"/>
+                <MenuItem Header="{DynamicResource menu_file_open}"/>
+                <MenuItem Header="{DynamicResource menu_file_open_t}"/>
+                <MenuItem Header="{DynamicResource menu_file_save}"/>
+                <MenuItem Header="{DynamicResource menu_file_new}"/>
+                <MenuItem Header="{DynamicResource menu_file_new}"/>
+                <MenuItem Header="{DynamicResource menu_file_new}"/>
+            </MenuItem>
+            <MenuItem  Header="{DynamicResource menu_search}" />
+            <MenuItem  Header="{DynamicResource menu_ophens}" />
+            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
         </Menu>
+     
     </Grid>
 </Window>
