@@ -61,8 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Code\DelegateCommand.cs" />
     <Compile Include="Model\test.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
+    <Compile Include="ViewModel\View_Model_Base.cs" />
     <Compile Include="View\test.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
