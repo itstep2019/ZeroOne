@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,15 @@ namespace ZeroOne
         {
             InitializeComponent();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 <<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of ecc4f84... Rollback
             App.LanguageChanged += LanguageChanged;
 
             CultureInfo currLang = App.Language;
@@ -70,6 +77,11 @@ namespace ZeroOne
 
         }
 
+<<<<<<< HEAD
+=======
+
+        #region Tab move
+>>>>>>> parent of ecc4f84... Rollback
         private void TabItem_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             var tabItem = e.Source as TabItem;
@@ -83,7 +95,10 @@ namespace ZeroOne
             }
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of ecc4f84... Rollback
         private void TabItem_Drop(object sender, DragEventArgs e)
         {
             var tabItemTarget = e.Source as TabItem;
@@ -103,6 +118,11 @@ namespace ZeroOne
                 tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
 =======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
+>>>>>>> parent of ecc4f84... Rollback
             Read();
         }
 
@@ -111,8 +131,16 @@ namespace ZeroOne
             Interfaces.IReader reader = new Readers.TxtReader();
             Interfaces.IDocument document = await reader.Read("ViewModelBase.cs");
             MessageBox.Show(document.Data);
+<<<<<<< HEAD
 >>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
 >>>>>>> parent of 7d403b4... Reload
+=======
+<<<<<<< HEAD
+>>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
+=======
+>>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
+>>>>>>> parent of ecc4f84... Rollback
         }
+        #endregion Tab move
     }
 }

@@ -15,6 +15,7 @@ namespace ZeroOne.Readers
         public Task<IDocument> Read(string path)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             //return Task.Factory.StartNew(() => {  });
 
             //DocumentCore txt = DocumentCore.Load(path, new TxtLoadOptions());
@@ -25,6 +26,11 @@ namespace ZeroOne.Readers
             
             
 >>>>>>> parent of 7d403b4... Reload
+=======
+            DocumentCore txt = DocumentCore.Load(path, new TxtLoadOptions());
+            
+            
+>>>>>>> parent of ecc4f84... Rollback
         }
     }
 }
