@@ -126,6 +126,7 @@
     <None Include="App.config" />
   </ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   <ItemGroup />
 >>>>>>> parent of f57886b... Revert "Merge branch 'Oleg'"
@@ -133,5 +134,15 @@
     <Folder Include="Model\" />
     <Folder Include="Resources\" />
   </ItemGroup>
+=======
+ 
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+=======
+  <ItemGroup />
+>>>>>>> parent of c4452fa... Merge branch 'Oleg'
+>>>>>>> parent of 7d403b4... Reload
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,11 +14,17 @@ namespace ZeroOne.Readers
     {
         public Task<IDocument> Read(string path)
         {
+<<<<<<< HEAD
             //return Task.Factory.StartNew(() => {  });
 
             //DocumentCore txt = DocumentCore.Load(path, new TxtLoadOptions());
             return null;
             //return new Documents.TxtDocument("");
+=======
+            DocumentCore txt = DocumentCore.Load(path, new TxtLoadOptions());
+            
+            
+>>>>>>> parent of 7d403b4... Reload
         }
     }
 }
