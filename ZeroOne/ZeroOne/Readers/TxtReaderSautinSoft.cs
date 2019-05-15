@@ -14,11 +14,9 @@ namespace ZeroOne.Readers
     {
         public Task<IDocument> Read(string path)
         {
-            //return Task.Factory.StartNew(() => {  });
-
-            //DocumentCore txt = DocumentCore.Load(path, new TxtLoadOptions());
-            return null;
-            //return new Documents.TxtDocument("");
+            DocumentCore txt = DocumentCore.Load(path, new TxtLoadOptions());
+            
+            
         }
     }
 }
