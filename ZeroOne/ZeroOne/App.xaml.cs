@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Log_error;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ZeroOne.ViewModel;
 
 namespace ZeroOne
 {
@@ -33,6 +35,43 @@ namespace ZeroOne
             m_Languages.Add(new CultureInfo("ru-RU"));
             App.LanguageChanged += App_LanguageChanged;
         }
+
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            try
+            {
+
+                Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+            }
+            try
+            {
+                MainWindow view = new MainWindow();
+
+
+               View_Model_Main viewModel = new View_Model_Main();
+
+
+
+                view.DataContext = viewModel;
+
+              //  view.closing = new Action(viewModel.Closing);
+      
+                view.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+
+            }
+
+        }
+
 
 
         public static event EventHandler LanguageChanged;
