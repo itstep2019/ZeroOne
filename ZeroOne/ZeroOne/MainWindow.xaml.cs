@@ -33,7 +33,10 @@ namespace ZeroOne
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of ecc4f84... Rollback
+=======
+>>>>>>> parent of 8174751... 1
             App.LanguageChanged += LanguageChanged;
 
             CultureInfo currLang = App.Language;
@@ -117,6 +120,7 @@ namespace ZeroOne
                 tabControl.Items.Remove(tabItemTarget);
                 tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -140,6 +144,8 @@ namespace ZeroOne
 =======
 >>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
 >>>>>>> parent of ecc4f84... Rollback
+=======
+>>>>>>> parent of 8174751... 1
         }
         #endregion Tab move
     }
