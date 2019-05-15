@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace ZeroOne.Model
+namespace ZeroOne.Documents
 {
     class TxtDocument : Interfaces.IDocument
     {
@@ -13,9 +13,9 @@ namespace ZeroOne.Model
 
         public string Data { get; private set; }
 
-        public void read()
+        public TxtDocument(string data)
         {
-            //document.Load("file.txt");
+            Data = data;
         }
 
 

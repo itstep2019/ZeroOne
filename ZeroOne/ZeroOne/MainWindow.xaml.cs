@@ -23,6 +23,15 @@ namespace ZeroOne
         public MainWindow()
         {
             InitializeComponent();
+
+            Read();
+        }
+
+        public async void Read()
+        {
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument document = await reader.Read("ViewModelBase.cs");
+            MessageBox.Show(document.Data);
         }
     }
 }

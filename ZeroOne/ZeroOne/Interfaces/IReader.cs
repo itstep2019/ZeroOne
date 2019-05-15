@@ -8,6 +8,6 @@ namespace ZeroOne.Interfaces
 {
     interface IReader
     {
-        Interfaces.IDocument Read(string path);
+        Task<Interfaces.IDocument> Read(string path);
     }
 }

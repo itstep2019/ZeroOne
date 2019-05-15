@@ -62,8 +62,9 @@
     <Compile Include="Helpers\Dialogs.cs" />
     <Compile Include="Interfaces\IDocument.cs" />
     <Compile Include="Interfaces\IReader.cs" />
-    <Compile Include="Model\TxtReader.cs" />
-    <Compile Include="Model\TxtDocument.cs" />
+    <Compile Include="Readers\TxtReader.cs" />
+    <Compile Include="Documents\TxtDocument.cs" />
+    <Compile Include="Readers\TxtReaderSautinSoft.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\test.cs" />
     <Page Include="MainWindow.xaml">
@@ -107,6 +108,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Model\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
