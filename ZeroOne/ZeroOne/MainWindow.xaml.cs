@@ -26,6 +26,7 @@ namespace ZeroOne
             InitializeComponent();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             App.LanguageChanged += LanguageChanged;
 
             CultureInfo currLang = App.Language;
@@ -103,6 +104,8 @@ namespace ZeroOne
                 tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
 =======
+=======
+>>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
             Read();
         }
 
@@ -111,6 +114,9 @@ namespace ZeroOne
             Interfaces.IReader reader = new Readers.TxtReader();
             Interfaces.IDocument document = await reader.Read("ViewModelBase.cs");
             MessageBox.Show(document.Data);
+<<<<<<< HEAD
+>>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
+=======
 >>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
         }
         #endregion Tab move
