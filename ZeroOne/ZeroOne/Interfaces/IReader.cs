@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZeroOne.View
+namespace ZeroOne.Interfaces
 {
-    class test
+    interface IReader
     {
-
+        Task<Interfaces.IDocument> Read(string path);
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZeroOne.Model
+namespace ZeroOne.ViewModel
 {
-    class test
+    class MainWindowViewModel
     {
+
     }
 }
