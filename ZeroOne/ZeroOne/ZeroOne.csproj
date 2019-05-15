@@ -35,6 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Reference Include="Log">
+      <HintPath>Lib\Log.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+>>>>>>> parent of f57886b... Revert "Merge branch 'Oleg'"
     <Reference Include="SautinSoft.Document, Version=3.7.4.3, Culture=neutral, PublicKeyToken=e759c76c7515592a, processorArchitecture=MSIL">
       <HintPath>..\packages\sautinsoft.document.3.7.4.3\lib\net461\SautinSoft.Document.dll</HintPath>
     </Reference>
@@ -59,6 +70,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
+=======
+    <Compile Include="Code\DelegateCommand.cs" />
+    <Compile Include="Model\test.cs" />
+    <Compile Include="ViewModel\View_Model_Main.cs" />
+    <Compile Include="ViewModel\View_Model_Base.cs" />
+>>>>>>> parent of f57886b... Revert "Merge branch 'Oleg'"
     <Compile Include="Helpers\Dialogs.cs" />
     <Compile Include="Interfaces\IDocument.cs" />
     <Compile Include="Interfaces\IReader.cs" />
@@ -107,6 +125,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup />
+>>>>>>> parent of f57886b... Revert "Merge branch 'Oleg'"
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Resources\" />
