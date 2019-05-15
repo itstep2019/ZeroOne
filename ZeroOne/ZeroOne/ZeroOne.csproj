@@ -118,14 +118,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-<<<<<<< HEAD
- 
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Resources\" />
-  </ItemGroup>
-=======
   <ItemGroup />
->>>>>>> parent of c4452fa... Merge branch 'Oleg'
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

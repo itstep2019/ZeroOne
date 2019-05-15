@@ -25,7 +25,6 @@ namespace ZeroOne
         {
             InitializeComponent();
 
-<<<<<<< HEAD
             App.LanguageChanged += LanguageChanged;
 
             CultureInfo currLang = App.Language;
@@ -69,6 +68,8 @@ namespace ZeroOne
 
         }
 
+
+        #region Tab move
         private void TabItem_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             var tabItem = e.Source as TabItem;
@@ -81,7 +82,6 @@ namespace ZeroOne
                 DragDrop.DoDragDrop(tabItem, tabItem, DragDropEffects.All);
             }
         }
-
 
         private void TabItem_Drop(object sender, DragEventArgs e)
         {
@@ -101,16 +101,7 @@ namespace ZeroOne
                 tabControl.Items.Remove(tabItemTarget);
                 tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
-=======
-            Read();
         }
-
-        public async void Read()
-        {
-            Interfaces.IReader reader = new Readers.TxtReader();
-            Interfaces.IDocument document = await reader.Read("ViewModelBase.cs");
-            MessageBox.Show(document.Data);
->>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
-        }
+        #endregion Tab move
     }
 }
