@@ -68,6 +68,8 @@ namespace ZeroOne
 
         }
 
+
+        #region Tab move
         private void TabItem_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             var tabItem = e.Source as TabItem;
@@ -80,7 +82,6 @@ namespace ZeroOne
                 DragDrop.DoDragDrop(tabItem, tabItem, DragDropEffects.All);
             }
         }
-
 
         private void TabItem_Drop(object sender, DragEventArgs e)
         {
@@ -101,5 +102,6 @@ namespace ZeroOne
                 tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
         }
+        #endregion Tab move
     }
 }
