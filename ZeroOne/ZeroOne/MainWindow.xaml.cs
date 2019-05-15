@@ -25,6 +25,7 @@ namespace ZeroOne
         {
             InitializeComponent();
 
+<<<<<<< HEAD
             App.LanguageChanged += LanguageChanged;
 
             CultureInfo currLang = App.Language;
@@ -100,6 +101,16 @@ namespace ZeroOne
                 tabControl.Items.Remove(tabItemTarget);
                 tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
+=======
+            Read();
+        }
+
+        public async void Read()
+        {
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument document = await reader.Read("ViewModelBase.cs");
+            MessageBox.Show(document.Data);
+>>>>>>> parent of 9b2feb3... TxtReaderSautinSoft
         }
     }
 }
