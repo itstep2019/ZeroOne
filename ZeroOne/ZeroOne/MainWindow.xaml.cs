@@ -25,7 +25,7 @@ namespace ZeroOne
         {
             InitializeComponent();
 
-            ReadAsync("text.txt");
+            //ReadAsync("text.txt");
             //Read("text.txt");
             
         }
