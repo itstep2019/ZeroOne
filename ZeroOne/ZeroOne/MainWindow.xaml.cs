@@ -25,28 +25,36 @@ namespace ZeroOne
         {
             InitializeComponent();
 
-            Read("text.txt");
+            ReadAsync("text.txt");
+            //Read("text.txt");
+            
+        }
+
+        public async void ReadAsync(string path)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument doc = await reader.ReadAsync(path);
+
+            stopwatch.Stop();
+
+            MessageBox.Show(stopwatch.Elapsed.ToString());
         }
 
         public void Read(string path)
         {
             Stopwatch stopwatch = new Stopwatch();
 
+            stopwatch.Reset();
             stopwatch.Start();
             Interfaces.IReader reader = new Readers.TxtReader();
             Interfaces.IDocument doc = reader.Read(path);
             stopwatch.Stop();
 
             MessageBox.Show(stopwatch.Elapsed.ToString());
-
-            stopwatch.Start();
-            reader = new Readers.TxtReader();
-            doc = reader.Read(path);
-            stopwatch.Stop();
-
-            // MessageBox.Show(doc.Data);
-            MessageBox.Show(stopwatch.Elapsed.ToString());
-            
         }
     }
 }
