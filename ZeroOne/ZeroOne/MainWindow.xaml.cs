@@ -131,30 +131,17 @@ namespace ZeroOne
 
 
 
-//---------------------------------OLEG------------------------------
+        //---------------------------------OLEG------------------------------
         public async void ReadAsync(string path)
         {
-            stopwatch.Start();
-
             Interfaces.IReader reader = new Readers.TxtReader();
             Interfaces.IDocument doc = await reader.ReadAsync(path);
-
-            stopwatch.Stop();
-
-            MessageBox.Show(stopwatch.Elapsed.ToString());
         }
 
         public void Read(string path)
         {
-            Stopwatch stopwatch = new Stopwatch();
-
-            stopwatch.Reset();
-            stopwatch.Start();
             Interfaces.IReader reader = new Readers.TxtReader();
             Interfaces.IDocument doc = reader.Read(path);
-            stopwatch.Stop();
-
-            MessageBox.Show(stopwatch.Elapsed.ToString());
         }
     }
 }
