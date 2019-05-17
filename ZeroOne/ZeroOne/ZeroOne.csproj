@@ -66,7 +66,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Code\DelegateCommand.cs" />
+    <Compile Include="Documents\TxtDocument.cs" />
+    <Compile Include="Helpers\Dialogs.cs" />
+    <Compile Include="Interfaces\IDocument.cs" />
+    <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Model\test.cs" />
+    <Compile Include="Readers\TxtReader.cs" />
     <Compile Include="ViewModel\View_Model_Main.cs" />
     <Compile Include="ViewModel\View_Model_Base.cs" />
     <Compile Include="View\test.cs" />
