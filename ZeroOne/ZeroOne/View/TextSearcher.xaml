@@ -1,0 +1,34 @@
+﻿<Window x:Class="ZeroOne.View.TextSearcher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZeroOne.View"
+        mc:Ignorable="d"
+        Title="TextSearcher" Height="500" Width="800" MaxHeight="500" MinHeight="500" MaxWidth="800" MinWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBox Name="Searcher" Grid.Row="0" Margin="20,28,20,27" Height="50" Grid.Column="0"></TextBox>
+        <Button Grid.Column="1" Height="50" Width="200" FontSize="30" Content="Найти"/>
+        <StackPanel x:Name="stackPanel" Margin="18" Grid.Row="1">
+            <CheckBox x:Name="checkBox1" Margin="2"  FontSize="18" IsThreeState="True" IsChecked="False"  Content="Учитывать Регистр" />
+            <CheckBox x:Name="checkBox2" Margin="2"  FontSize="18" IsThreeState="True" IsChecked="True" Content="Выделить Всё"/>
+            <CheckBox x:Name="checkBox3" Margin="2"  FontSize="18" IsThreeState="True" IsChecked="True"  Content="Прокручивать До Найденого"/>
+        </StackPanel>
+        <Button Grid.Row="1" Grid.Column="1" Height="50" Width="200" FontSize="30" IsEnabled="False" Content="Настройки"/>
+        <TextBox Name="Changer" Grid.Row="2" Height="50" Margin="20"></TextBox>
+        <Button Grid.Column="1" Grid.Row="2" Height="50" Width="200" FontSize="30" Content="Заменить"/>
+        <Button Grid.Row="3" Height="50" Width="200" FontSize="30" Content="Вперёд"/>
+        <Button Grid.Row="3" Grid.Column="1" Height="50" Width="200" FontSize="30" Content="Назад"/>
+
+    </Grid>
+</Window>

@@ -66,6 +66,9 @@
     <Compile Include="ViewModel\SaveConvecter.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="View\test.cs" />
+    <Compile Include="View\TextSearcher.xaml.cs">
+      <DependentUpon>TextSearcher.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\lang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TextSearcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
