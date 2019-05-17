@@ -61,11 +61,11 @@ namespace ZeroOne.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to System.Globalization.CultureInfo.
+        ///   Looks up a localized string similar to File.
         /// </summary>
-        internal static string DefaultLanguage {
+        internal static string MenuFile {
             get {
-                return ResourceManager.GetString("DefaultLanguage", resourceCulture);
+                return ResourceManager.GetString("MenuFile", resourceCulture);
             }
         }
     }

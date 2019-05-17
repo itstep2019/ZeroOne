@@ -5,110 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZeroOne"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        
-        
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid DataContext="">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <Menu  Grid.Row="0">
-            <MenuItem  Header="{DynamicResource menu_file}">
-                <MenuItem Header="{DynamicResource menu_file_new}"/>
-                <MenuItem Header="{DynamicResource menu_file_open}"/>
-                <MenuItem Header="{DynamicResource menu_file_open_t}"/>
-                <Separator/>
-                <MenuItem Header="{DynamicResource menu_file_save}"/>
-                <MenuItem Header="{DynamicResource menu_file_save_as}"/>
-                <MenuItem Header="{DynamicResource menu_file_save_all}"/>
-
-            </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_search}" >
-                <MenuItem Header="{DynamicResource menu_search_next}"/>
-                <MenuItem Header="{DynamicResource menu_search_beak}"/>
-                <Separator/>
-                <MenuItem Header="{DynamicResource menu_search_and_reples}"/>
-                <MenuItem Header="{DynamicResource menu_search_and_select}"/>
-                <Separator/>
-                <MenuItem Header="{DynamicResource menu_search_go_to_selected}"/>
-            </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_ophens}" >
-                <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
-            </MenuItem>
-
+        <Menu Grid.Row="0">
+            <MenuItem Header="File"/>
         </Menu>
-
-        <Grid Grid.Row="1">
-
-
-
-            <TabControl x:Name="TabWindow" SelectionChanged="TabWindow_SelectionChanged">
-                <TabControl.Resources>
-                    <Style TargetType="TabItem">
-                        <Setter Property="AllowDrop" Value="True"/>
-                        <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
-                        <EventSetter Event="Drop" Handler="TabItem_Drop"/>
-                    </Style>
-                </TabControl.Resources>
-
-                <TabItem Height="32" VerticalAlignment="Top">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Label Content="1aaaaaaaaa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <Button Height="24"
-                                        Width="24"
-  Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-  ToolTip="MaterialDesignFloatingActionMiniLightButton" Click="Button_Click">
-                                    <materialDesign:PackIcon Kind="MicrosoftXamarin"
-                                        Height="20"
-                                        Width="20"
-                                        VerticalAlignment="Center" 
-                                        HorizontalAlignment="Center"/>
-                                </Button>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-
-                    <Grid>
-
-                    </Grid>
-                </TabItem>
-
-                <TabItem >
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Label Content="aaaaaaaaa"/>
-                                <Button Height="24"
-                                        Width="24"
-                                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                                    <materialDesign:PackIcon Kind="MicrosoftXamarin"
-                                        Height="20"
-                                        Width="20" 
-                                         VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Button>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-
-                    <Grid>
-
-                    </Grid>
-                </TabItem>
-            </TabControl>
-
-        </Grid>
     </Grid>
 </Window>
