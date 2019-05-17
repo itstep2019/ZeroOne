@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,12 @@ namespace ZeroOne
                 menuLang.Click += ChangeLanguageClick;
                 menuLanguage.Items.Add(menuLang);
             }
+
+
+                  // ReadAsync("text.txt");
+                  //  Read("text.txt");
+            
+        
         }
 
         private void LanguageChanged(Object sender, EventArgs e)
@@ -81,6 +88,59 @@ namespace ZeroOne
             {
                 DragDrop.DoDragDrop(tabItem, tabItem, DragDropEffects.All);
             }
+        }
+
+        private void TabItem_Drop(object sender, DragEventArgs e)
+        {
+            var tabItemTarget = e.Source as TabItem;
+
+            var tabItemSource = e.Data.GetData(typeof(TabItem)) as TabItem;
+
+            if (!tabItemTarget.Equals(tabItemSource))
+            {
+                var tabControl = tabItemTarget.Parent as TabControl;
+                int sourceIndex = tabControl.Items.IndexOf(tabItemSource);
+                int targetIndex = tabControl.Items.IndexOf(tabItemTarget);
+
+                tabControl.Items.Remove(tabItemSource);
+                tabControl.Items.Insert(targetIndex, tabItemSource);
+
+                tabControl.Items.Remove(tabItemTarget);
+                tabControl.Items.Insert(sourceIndex, tabItemTarget);
+            }
+        }
+        #endregion Tab move
+
+        private void TabWindow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+       
+
+        
+
+        //Delete tab
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Add tab
+
+
+
+        //---------------------------------OLEG------------------------------
+        public async void ReadAsync(string path)
+        {
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument doc = await reader.ReadAsync(path);
+        }
+
+        public void Read(string path)
+        {
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument doc = reader.Read(path);
         }
 
         private void TabItem_Drop(object sender, DragEventArgs e)
