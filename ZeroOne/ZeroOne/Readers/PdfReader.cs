@@ -6,25 +6,23 @@ using System.Threading.Tasks;
 using SautinSoft.Document;
 using ZeroOne.Interfaces;
 
-
-
 namespace ZeroOne.Readers
 {
-    class TxtReader : IReader
+    class PdfReader : IReader
     {
         public IDocument Read(string path)
         {
-            if (System.IO.Path.GetExtension(path).ToLower() != ".txt")
-                throw new ArgumentException("TxtReader читает лишь файлы .txt");
+            if (System.IO.Path.GetExtension(path).ToLower() != ".pdf")
+                throw new ArgumentException("TxtReader читает лишь файлы .pdf");
 
-            DocumentCore txt = DocumentCore.Load(path);
-            return new Documents.TxtDocument(txt);
+            DocumentCore doc = DocumentCore.Load(path);
+            return new Documents.PdfDocument(doc);
         }
 
         public async Task<IDocument> ReadAsync(string path)
         {
-            return await Task.Run(() => 
-            {               
+            return await Task.Run(() =>
+            {
                 return Read(path);
             });
         }

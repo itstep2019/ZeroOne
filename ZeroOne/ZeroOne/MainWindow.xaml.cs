@@ -43,10 +43,30 @@ namespace ZeroOne
             }
 
 
-                  // ReadAsync("text.txt");
-                  //  Read("text.txt");
+            foreach (var str in Helpers.Dialogs.OpenFileDialog())
+            {
+                Read(str);
+            }
+
+            //ReadAsync("text.txt");
+            //Read("text.txt");
             
         
+        }
+
+        //---------------------------------OLEG------------------------------
+        public async void ReadAsync(string path)
+        {
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument doc = await reader.ReadAsync(path);
+        }
+
+        public void Read(string path)
+        {
+            Interfaces.IReader reader = new Readers.TxtReader();
+            Interfaces.IDocument doc = reader.Read(path);
+
+            MessageBox.Show(doc.Document.Content.ToString());
         }
 
         private void LanguageChanged(Object sender, EventArgs e)
@@ -132,18 +152,7 @@ namespace ZeroOne
 
 
 
-        //---------------------------------OLEG------------------------------
-        public async void ReadAsync(string path)
-        {
-            Interfaces.IReader reader = new Readers.TxtReader();
-            Interfaces.IDocument doc = await reader.ReadAsync(path);
-        }
-
-        public void Read(string path)
-        {
-            Interfaces.IReader reader = new Readers.TxtReader();
-            Interfaces.IDocument doc = reader.Read(path);
-        }
+       
       
 
     }
