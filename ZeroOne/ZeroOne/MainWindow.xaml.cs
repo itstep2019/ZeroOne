@@ -49,6 +49,8 @@ namespace ZeroOne
         
         }
 
+        bool i = false;
+        #region language
         private void LanguageChanged(Object sender, EventArgs e)
         {
             CultureInfo currLang = App.Language;
@@ -74,7 +76,7 @@ namespace ZeroOne
             }
 
         }
-
+        #endregion language
 
         #region Tab move
         private void TabItem_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -111,10 +113,7 @@ namespace ZeroOne
         }
         #endregion Tab move
 
-        private void TabWindow_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+      
 
        
 
@@ -143,39 +142,11 @@ namespace ZeroOne
             Interfaces.IDocument doc = reader.Read(path);
         }
 
-        private void TabItem_Drop(object sender, DragEventArgs e)
+        private void TabWindow_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var tabItemTarget = e.Source as TabItem;
-
-            var tabItemSource = e.Data.GetData(typeof(TabItem)) as TabItem;
-
-            if (!tabItemTarget.Equals(tabItemSource))
-            {
-                var tabControl = tabItemTarget.Parent as TabControl;
-                int sourceIndex = tabControl.Items.IndexOf(tabItemSource);
-                int targetIndex = tabControl.Items.IndexOf(tabItemTarget);
-
-                tabControl.Items.Remove(tabItemSource);
-                tabControl.Items.Insert(targetIndex, tabItemSource);
-
-                tabControl.Items.Remove(tabItemTarget);
-                tabControl.Items.Insert(sourceIndex, tabItemTarget);
-            }
+            if(e.Source is TabControl)
+            MessageBox.Show("hi");
+            e.Handled = false;
         }
-        #endregion Tab move
-
-        private void TabWindow_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        //Delete tab
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //Add tab
-
     }
 }

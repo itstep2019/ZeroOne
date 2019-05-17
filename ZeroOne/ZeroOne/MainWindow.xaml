@@ -52,12 +52,13 @@
 
 
 
-            <TabControl x:Name="TabWindow" SelectionChanged="TabWindow_SelectionChanged">
+            <TabControl x:Name="TabWindow" PreviewMouseDoubleClick="TabWindow_PreviewMouseDoubleClick">
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="AllowDrop" Value="True"/>
                         <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
                         <EventSetter Event="Drop" Handler="TabItem_Drop"/>
+
                     </Style>
                 </TabControl.Resources>
 
@@ -85,7 +86,7 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem >
+                <TabItem Height="34" VerticalAlignment="Top" >
                     <TabItem.HeaderTemplate>
                         <DataTemplate>
                             <WrapPanel>
@@ -107,6 +108,7 @@
 
                     </Grid>
                 </TabItem>
+                
             </TabControl>
 
         </Grid>
