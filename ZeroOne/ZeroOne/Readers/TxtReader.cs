@@ -14,23 +14,15 @@ namespace ZeroOne.Readers
     {
         public IDocument Read(string path)
         {
-            //DocumentCore txt = DocumentCore.Load(path);
-            //return new Documents.TxtDocument(txt);
-            IDocument doc = null;
-            var task = Task.Run(async () =>
-            {
-                doc = await ReadAsync(path);
-            });
-            task.Wait();
-            return doc;
+            DocumentCore txt = DocumentCore.Load(path);
+            return new Documents.TxtDocument(txt);
         }
 
         public async Task<IDocument> ReadAsync(string path)
         {
             return await Task.Run(() => 
-            {
-                DocumentCore txt = DocumentCore.Load(path);                
-                return new Documents.TxtDocument(txt);
+            {               
+                return Read(path);
             });
         }
     }
