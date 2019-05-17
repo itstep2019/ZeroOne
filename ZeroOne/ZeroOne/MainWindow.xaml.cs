@@ -103,5 +103,19 @@ namespace ZeroOne
             }
         }
         #endregion Tab move
+
+        private void TabWindow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        //Delete tab
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Add tab
+
     }
 }
