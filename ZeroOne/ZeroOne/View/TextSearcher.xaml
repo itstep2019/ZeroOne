@@ -5,30 +5,109 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZeroOne.View"
         mc:Ignorable="d"
-        Title="TextSearcher" Height="500" Width="800" MaxHeight="500" MinHeight="500" MaxWidth="800" MinWidth="800">
+        Title="TextSearcher" Height="300" Width="500" MaxHeight="300" MinHeight="300" MaxWidth="500" MinWidth="500">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <TextBox Name="Searcher" Grid.Row="0" Margin="20,28,20,27" Height="50" Grid.Column="0"></TextBox>
-        <Button Grid.Column="1" Height="50" Width="200" FontSize="30" Content="Найти"/>
-        <StackPanel x:Name="stackPanel" Margin="18" Grid.Row="1">
-            <CheckBox x:Name="checkBox1" Margin="2"  FontSize="18" IsThreeState="True" IsChecked="False"  Content="Учитывать Регистр" />
-            <CheckBox x:Name="checkBox2" Margin="2"  FontSize="18" IsThreeState="True" IsChecked="True" Content="Выделить Всё"/>
-            <CheckBox x:Name="checkBox3" Margin="2"  FontSize="18" IsThreeState="True" IsChecked="True"  Content="Прокручивать До Найденого"/>
-        </StackPanel>
-        <Button Grid.Row="1" Grid.Column="1" Height="50" Width="200" FontSize="30" IsEnabled="False" Content="Настройки"/>
-        <TextBox Name="Changer" Grid.Row="2" Height="50" Margin="20"></TextBox>
-        <Button Grid.Column="1" Grid.Row="2" Height="50" Width="200" FontSize="30" Content="Заменить"/>
-        <Button Grid.Row="3" Height="50" Width="200" FontSize="30" Content="Вперёд"/>
-        <Button Grid.Row="3" Grid.Column="1" Height="50" Width="200" FontSize="30" Content="Назад"/>
+        <TabControl>
+            <TabItem Header="Найти">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Column="0" Grid.Row="0" Margin="60,15,15,15">
+                        <TextBlock Margin="0,0,5,0">Найти:</TextBlock>
+                        <TextBox Name="TextSearch"></TextBox>
+                    </DockPanel>
+                    <StackPanel Grid.Column="1" Grid.RowSpan="2" Margin="15">
+                        <Button Content="Найти Далее"></Button>
+                        <Button Content="Посчитать" Margin="0,15,0,7.5"></Button>
+                        <Button  Margin="0,7.5,0,7.5">
+                            <TextBlock TextAlignment="Center">Найти Всё во Всех <LineBreak/> Открытых Документах</TextBlock>
+                        </Button>
+                        <Button Margin="0,7.5,0,15" >
+                            <TextBlock TextAlignment="Center">Найти Всё в <LineBreak/> Текущем Документе</TextBlock>
+                        </Button>
+                        <Button Content="Закрыть"></Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="0" Grid.Row="1">
+                        <CheckBox Margin="10,10,10,5" Name="ReversSearch">Обратное направление поиска</CheckBox>
+                        <CheckBox Margin="10,5,10,5" Name="FullWord">Только целые слова</CheckBox>
+                        <CheckBox Margin="10,5,10,5" Name="Registr">Учитовать регистр</CheckBox>
+                        <CheckBox Margin="10,5,10,5" Name="UnStopebleSearch">Зациклить поиск</CheckBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Заменить"></TabItem>
+            <TabItem Header="Найти В Файлах">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" Grid.Row="0">
+                        <Button Margin="10,10,30,5">Найти всё</Button>
+                        <Button Margin="10,10,30,5">Заменить в Файлах</Button>
+                        <Button Margin="10,10,30,5">Закрыть</Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <CheckBox Margin="10,10,30,5">Папка Текущего док.</CheckBox>
+                        <CheckBox Margin="10,10,30,5">Во всех подпапках</CheckBox>
+                        <CheckBox Margin="10,10,30,5">В скрытых папках</CheckBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <DockPanel Margin="60,10,10,5">
+                            <TextBlock Margin="0,0,10,0">Найти</TextBlock>
+                            <TextBox></TextBox>
+                        </DockPanel>
+                        <DockPanel Margin="60,10,10,5">
+                            <TextBlock Margin="0,0,10,0">Заменить на</TextBlock>
+                            <TextBox></TextBox>
+                        </DockPanel>
+                        <DockPanel Margin="60,10,10,5">
+                            <TextBlock Margin="0,0,10,0"> Фильтры</TextBlock>
+                            <TextBox></TextBox>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <CheckBox Margin="20,10,10,5">Только целые слова</CheckBox>
+                        <CheckBox Margin="20,5,10,10">Учитывать регистр</CheckBox>
+                    </StackPanel>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Пометки">
+                <Grid>
 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="10">
+                        <DockPanel Margin="30,10,10,10">
+                            <TextBlock Margin="0,0,10,0">Найти</TextBlock>
+                            <TextBox></TextBox>
+                        </DockPanel>
+                        <CheckBox Margin="0,5,0,5">Помечать Закладкой</CheckBox>
+                        <CheckBox Margin="0,5,0,5">Убрать привидущии пометки</CheckBox>
+                        <CheckBox Margin="0,5,0,5">Только целые слова</CheckBox>
+                        <CheckBox Margin="0,5,0,5">Учитывать регистр</CheckBox>
+                        <CheckBox Margin="0,5,0,5">Зациклить поиск</CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10">
+                        <Button Margin="5">Пометить всё</Button>
+                        <Button Margin="5">Убрать всё</Button>
+                        <Button Margin="5">Закрыть</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
