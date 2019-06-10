@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,30 +10,37 @@ using ZeroOne.Code;
 
 namespace ZeroOne.ViewModel
 {
+
+    public sealed class TabItem
+    {
+        private static int counter = 0;
+
+        public TabItem()
+        {
+            ++counter;
+            Id = counter;
+        }
+
+        public int Id { get; private set; }
+        public string Header { get; set; }
+        public string Content { get; set; }
+    }
+
     class View_Model_Main : View_Model_Base
     {
         public View_Model_Main()
         {
-            Title = "Notepad";
-            NewTabTitle = "Новый документ";
+            
+            Tabs.Add(new TabItem { Header = "One", Content = "One's content" });
+            Tabs.Add(new TabItem { Header = "Two", Content = "Two's content" });
         }
 
 
         #region variable
 
-        string _title = string.Empty;
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value, nameof(Title));
-        }
+        public ObservableCollection<TabItem> Tabs { get; private set; } = new ObservableCollection<TabItem>();
 
-        string _newTabTitle = string.Empty;
-        public string NewTabTitle
-        {
-            get => _newTabTitle;
-            set => SetProperty(ref _newTabTitle, value, nameof(NewTabTitle));
-        }
+       
 
         #endregion variable
 

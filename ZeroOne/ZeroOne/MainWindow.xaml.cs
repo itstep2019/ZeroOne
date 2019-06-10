@@ -50,7 +50,7 @@ namespace ZeroOne
 
             //ReadAsync("text.txt");
             //Read("text.txt");
-            TabWindow.Items.Add(new TabItem() { });
+            
 
 
         }
@@ -146,7 +146,7 @@ namespace ZeroOne
         //Delete tab
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         //Add tab

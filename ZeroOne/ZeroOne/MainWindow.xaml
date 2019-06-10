@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:ZeroOne"
         xmlns:viewModels="clr-namespace:ZeroOne.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="{DynamicResource Window_Title}" Height="450" Width="800"
+        MinHeight="200"
+        MinWidth="300"
+        Icon="icon.ico"
         
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -31,7 +34,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu  Grid.Row="0">
+        <Menu Grid.Row="0">
             <MenuItem  Header="{DynamicResource menu_file}">
                 <MenuItem Header="{DynamicResource menu_file_new}"/>
                 <MenuItem Header="{DynamicResource menu_file_open}"/>
@@ -40,7 +43,9 @@
                 <MenuItem Header="{DynamicResource menu_file_save}"/>
                 <MenuItem Header="{DynamicResource menu_file_save_as}"/>
                 <MenuItem Header="{DynamicResource menu_file_save_all}"/>
-
+                <Separator/>
+                <MenuItem Header="{DynamicResource menu_file_exit}"/>
+                
             </MenuItem>
             <MenuItem  Header="{DynamicResource menu_search}" >
                 <MenuItem Header="{DynamicResource menu_search_next}"/>
@@ -51,63 +56,62 @@
                 <Separator/>
                 <MenuItem Header="{DynamicResource menu_search_go_to_selected}"/>
             </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_ophens}" >
-                <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
-            </MenuItem>
+
+            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+            <!--<MenuItem  Header="{DynamicResource menu_ophens}" >
+               
+            </MenuItem>-->
 
         </Menu>
 
         <Grid Grid.Row="1">
 
-            <TabControl x:Name="TabWindow" SelectionChanged="TabWindow_SelectionChanged">
-                <TabControl.Resources>
-                    <Style TargetType="{x:Type TabItem}">
-                        <Setter Property="AllowDrop" Value="True"/>
+            <TabControl 
+                x:Name="TabWindow"
+                AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"
+                SelectionChanged="TabWindow_SelectionChanged"
+                ItemsSource="{Binding Tabs, UpdateSourceTrigger=PropertyChanged}"
+                >
 
-                        <Setter Property="HeaderTemplate">
-                            <Setter.Value>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <Label Content="{Binding NewTabTitle, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <Button Height="24"
-                                                Width="24"
-                                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                                ToolTip="Закрыть вкладку" 
-                                                Click="Button_Click">
-                                            <materialDesign:PackIcon Kind="MicrosoftXamarin"
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button
+                                Height="24"
+                                Width="24"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                ToolTip="{DynamicResource close_tab_tooltip}" 
+                                Click="Button_Click">
+                                <materialDesign:PackIcon Kind="MicrosoftXamarin"
                                         Height="20"
                                         Width="20"
                                         VerticalAlignment="Center" 
                                         HorizontalAlignment="Center"/>
-                                        </Button>
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </Setter.Value>
-                        </Setter>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
 
-                        <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
-                        <EventSetter Event="Drop" Handler="TabItem_Drop"/>
-                    </Style>
-                </TabControl.Resources>
-                
-                
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <TextBox
+                            Padding="5px"
+                            Style="{Binding}"
+                            VerticalScrollBarVisibility="Auto"
+                            TextWrapping="Wrap"                             
+                            AcceptsReturn="True" 
+                            Text="{Binding Content}" />
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
 
-                <TabItem Height="32" VerticalAlignment="Top">
-                    
-
-                    <Grid>
-
-                    </Grid>
-                </TabItem>
-
-                <TabItem >
-                 
-                    <Grid>
-
-                    </Grid>
-                </TabItem>
             </TabControl>
 
         </Grid>
+
+        
+        
     </Grid>
 </Window>

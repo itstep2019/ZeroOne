@@ -54,7 +54,7 @@ namespace ZeroOne
                 MainWindow view = new MainWindow();
 
 
-               View_Model_Main viewModel = new View_Model_Main();
+                View_Model_Main viewModel = new View_Model_Main();
 
 
 

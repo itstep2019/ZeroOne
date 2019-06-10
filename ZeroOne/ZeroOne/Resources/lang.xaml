@@ -3,7 +3,7 @@
                     xmlns:v="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:ZeroOne.Resources">
 
-    <v:String x:Key="Window_Title">Zero-One</v:String>
+    <v:String x:Key="Window_Title">Notepad</v:String>
     <v:String x:Key="menu_file">File</v:String>
     <v:String x:Key="menu_search">Search</v:String>
     <v:String x:Key="menu_ophens">Settings</v:String>
@@ -12,14 +12,17 @@
 
     <v:String x:Key="menu_file_new">New file</v:String>
     <v:String x:Key="menu_file_open">Open file</v:String>
-    <v:String x:Key="menu_file_open_t">Open file in this tab</v:String>
+    <v:String x:Key="menu_file_open_t">Open file in new tab</v:String>
     <v:String x:Key="menu_file_save">Save file</v:String>
     <v:String x:Key="menu_file_save_as">Save file as...</v:String>
     <v:String x:Key="menu_file_save_all">Save all files</v:String>
+    <v:String x:Key="menu_file_exit">Exit</v:String>
 
     <v:String x:Key="menu_search_next">Search next</v:String>
     <v:String x:Key="menu_search_beak">Search beak</v:String>
     <v:String x:Key="menu_search_and_reples">Search and replace</v:String>
     <v:String x:Key="menu_search_and_select">Search and select</v:String>
     <v:String x:Key="menu_search_go_to_selected">Go to selected</v:String>
+
+    <v:String x:Key="close_tab_tooltip">Close tab</v:String>
 </ResourceDictionary>
