@@ -43,15 +43,16 @@ namespace ZeroOne
             }
 
 
-            foreach (var str in Helpers.Dialogs.OpenFileDialog())
-            {
-                Read(str);
-            }
+            //foreach (var str in Helpers.Dialogs.OpenFileDialog())
+            //{
+            //    Read(str);
+            //}
 
             //ReadAsync("text.txt");
             //Read("text.txt");
-            
-        
+            TabWindow.Items.Add(new TabItem() { });
+
+
         }
 
         //---------------------------------OLEG------------------------------

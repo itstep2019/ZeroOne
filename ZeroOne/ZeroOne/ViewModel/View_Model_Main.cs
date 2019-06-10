@@ -11,6 +11,13 @@ namespace ZeroOne.ViewModel
 {
     class View_Model_Main : View_Model_Base
     {
+        public View_Model_Main()
+        {
+            Title = "Notepad";
+            NewTabTitle = "Новый документ";
+        }
+
+
         #region variable
 
         string _title = string.Empty;
@@ -18,6 +25,13 @@ namespace ZeroOne.ViewModel
         {
             get => _title;
             set => SetProperty(ref _title, value, nameof(Title));
+        }
+
+        string _newTabTitle = string.Empty;
+        public string NewTabTitle
+        {
+            get => _newTabTitle;
+            set => SetProperty(ref _newTabTitle, value, nameof(NewTabTitle));
         }
 
         #endregion variable
