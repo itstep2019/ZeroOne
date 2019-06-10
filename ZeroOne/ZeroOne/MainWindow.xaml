@@ -8,14 +8,15 @@
         Title="MainWindow" Height="450" Width="800"
         
         
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -50,8 +51,6 @@
 
         <Grid Grid.Row="1">
 
-
-
             <TabControl x:Name="TabWindow" SelectionChanged="TabWindow_SelectionChanged">
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
@@ -60,6 +59,8 @@
                         <EventSetter Event="Drop" Handler="TabItem_Drop"/>
                     </Style>
                 </TabControl.Resources>
+                
+                
 
                 <TabItem Height="32" VerticalAlignment="Top">
                     <TabItem.HeaderTemplate>
