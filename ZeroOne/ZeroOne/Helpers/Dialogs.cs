@@ -9,20 +9,25 @@ namespace ZeroOne.Helpers
 {
     class Dialogs
     {
-        static string[] OpenFileDialog(System.Windows.Forms.IWin32Window owner = null)
+        public static string[] OpenFileDialog(System.Windows.Forms.IWin32Window owner = null)
         {
             string[] files = Array.Empty<string>();
 
             using (var open = new System.Windows.Forms.OpenFileDialog())
             {
                 open.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                open.Filter = 
-                    "Текстовые документы (*.txt)|*.txt|" +
+                open.Filter = "Текстовые документы (*.txt)|*.txt|" +
                     "Portable Document Format (*.pdf)|*.pdf|" +
-                    "Rich Text Format (*.rtf)|*.rtf|";
-                open.FilterIndex = 1;
-                open.FileName = "";
-                open.Multiselect = true;                             
+                    "Rich Text Format (*.rtf)|*.rtf";
+
+
+                //"Текстовые документы (*.txt)| .txt | " +
+                //"Portable Document Format (*.pdf) | .pdf | " +
+                //"Rich Text Format (*.rtf) | .rtf";
+
+                //Текстовые файлы(*.txt)| *.txt | Все файлы(*.*) | *.*
+
+                open.Multiselect = true;
                 open.CheckPathExists = true;
                 open.CheckFileExists = true;
 
