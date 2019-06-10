@@ -30,7 +30,8 @@ namespace ZeroOne.ViewModel
     {
         public View_Model_Main()
         {
-            
+            CloseTabCommand = new DelegateCommand(CloseTabCommandExecute, CloseTabCommandCanExecute);
+
             Tabs.Add(new TabItem { Header = "One", Content = "One's content" });
             Tabs.Add(new TabItem { Header = "Two", Content = "Two's content" });
         }
@@ -40,7 +41,14 @@ namespace ZeroOne.ViewModel
 
         public ObservableCollection<TabItem> Tabs { get; private set; } = new ObservableCollection<TabItem>();
 
-       
+
+        private TabItem _selectedTab = null;
+        public TabItem SelectedTab
+        {
+            get => _selectedTab;
+            set => SetProperty(ref _selectedTab, value, nameof(SelectedTab));
+        }
+
 
         #endregion variable
 
@@ -50,8 +58,21 @@ namespace ZeroOne.ViewModel
         #endregion Functions
 
 
-        #region Comands
+        #region Commands
 
+        public ICommand CloseTabCommand { get; private set; }
+       
+        void CloseTabCommandExecute(object obj)
+        {
+            int id = (int)obj;
+
+            var sel = Tabs.Select(t => t.Id == id).Single();
+
+        }
+        bool CloseTabCommandCanExecute(object obj)
+        {
+            return true;
+        }
 
         #region Menu
 
