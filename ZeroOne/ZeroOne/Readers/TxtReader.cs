@@ -15,7 +15,7 @@ namespace ZeroOne.Readers
         public IDocument Read(string path)
         {
             if (System.IO.Path.GetExtension(path).ToLower() != ".txt")
-                throw new ArgumentException("TxtReader читает лишь файлы .txt");
+                throw new ArgumentException(nameof(PdfReader) + " читает лишь файлы .txt");
 
             DocumentCore txt = DocumentCore.Load(path);
             return new Documents.TxtDocument(txt);

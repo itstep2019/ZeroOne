@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace ZeroOne.ViewModel
         public TabItem()
         {
             CloseTabCommand = new DelegateCommand(ViewModel.CloseTabCommandExecute, ViewModel.CloseTabCommandCanExecute);
+
             ++counter;
             Id = counter;
         }
@@ -27,7 +29,7 @@ namespace ZeroOne.ViewModel
         public int Id { get; private set; }
         public string Header { get; set; }
         public string Content { get; set; }
-        public bool IsSaved { get; set; } = false;
+        public bool IsSaved { get; set; } = true;
 
         public ICommand CloseTabCommand { get; private set; }
     }
@@ -123,7 +125,7 @@ namespace ZeroOne.ViewModel
         #region Button_click_open_file
 
         private DelegateCommand _Command_open_file;
-        public ICommand Button_click_open_file
+        public ICommand OpenFileCommand
         {
             get
             {
@@ -134,15 +136,28 @@ namespace ZeroOne.ViewModel
                 return _Command_open_file;
             }
         }
-        private void Execute_open_file(object o)
+        private async void Execute_open_file(object o)
         {
+            var files = Helpers.Dialogs.OpenFileDialog();
 
+            if  (files.Length > 0)
+            {
+                Interfaces.IReader reader = new Readers.TxtReader();
+                foreach (var file in files)
+                {
+                    Interfaces.IDocument doc = await reader.ReadAsync(file);
 
+                    Tabs.Add(new TabItem() { Header = Path.GetFileName(file), Content = doc.Document.Content.ToString() });
+                    SelectedTab = Tabs.Last();
+                }
+            }
+            
+
+            
         }
         private bool CanExecute_open_file(object o)
         {
-
-            return false;
+            return true;
         }
 
         #endregion  Button_click_open_file

@@ -42,7 +42,7 @@
         <Menu Grid.Row="0">
             <MenuItem  Header="{DynamicResource menu_file}">
                 <MenuItem Header="{DynamicResource menu_file_new}" Command="{Binding CreateNewFileCommand}"/>
-                <MenuItem Header="{DynamicResource menu_file_open}"/>
+                <MenuItem Header="{DynamicResource menu_file_open}" Command="{Binding OpenFileCommand}"/>
                 <MenuItem Header="{DynamicResource menu_file_open_t}"/>
                 <Separator/>
                 <MenuItem Header="{DynamicResource menu_file_save}"/>
@@ -83,7 +83,7 @@
 
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" AllowDrop="True" PreviewMouseMove="TabItem_PreviewMouseMove" Drop="TabItem_Drop">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Button
                                 Height="24"
