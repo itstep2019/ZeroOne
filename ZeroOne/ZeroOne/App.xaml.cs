@@ -18,7 +18,7 @@ namespace ZeroOne
 
     public partial class App : Application
     {
-        private static List<CultureInfo> m_Languages = new List<CultureInfo>();
+        private static readonly List<CultureInfo> m_Languages = new List<CultureInfo>();
 
         public static List<CultureInfo> Languages
         {

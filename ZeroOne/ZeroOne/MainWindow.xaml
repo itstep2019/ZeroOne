@@ -10,6 +10,7 @@
         MinHeight="200"
         MinWidth="300"
         Icon="icon.ico"
+        WindowStartupLocation="CenterScreen"
         
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -22,13 +23,17 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <viewModels:View_Model_Main x:Key="ViewModel"></viewModels:View_Model_Main>
-        </ResourceDictionary>
-    </Window.Resources>
+    <Window.DataContext>
+        <viewModels:View_Model_Main></viewModels:View_Model_Main>
+    </Window.DataContext>
 
-    <Grid DataContext="{Binding Source={StaticResource ViewModel}}">
+    
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CreateNewFileCommand}" Gesture="Ctrl+N"/>
+    </Window.InputBindings>
+    
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -36,7 +41,7 @@
 
         <Menu Grid.Row="0">
             <MenuItem  Header="{DynamicResource menu_file}">
-                <MenuItem Header="{DynamicResource menu_file_new}"/>
+                <MenuItem Header="{DynamicResource menu_file_new}" Command="{Binding CreateNewFileCommand}"/>
                 <MenuItem Header="{DynamicResource menu_file_open}"/>
                 <MenuItem Header="{DynamicResource menu_file_open_t}"/>
                 <Separator/>
@@ -73,11 +78,12 @@
                 Drop="TabItem_Drop"
                 ItemsSource="{Binding Tabs, UpdateSourceTrigger=PropertyChanged}"
                 SelectedValue="{Binding SelectedTab, UpdateSourceTrigger=PropertyChanged}"
+                
                 >
 
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" AllowDrop="True" PreviewMouseMove="TabItem_PreviewMouseMove" Drop="TabItem_Drop">
                             <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Button
                                 Height="24"
@@ -85,7 +91,7 @@
                                 Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                                 ToolTip="{DynamicResource close_tab_tooltip}"
                                 Command="{Binding CloseTabCommand}"
-                                
+                                CommandParameter="{Binding Id}"
                                 >
                                 <materialDesign:PackIcon Kind="MicrosoftXamarin"
                                         Height="20"

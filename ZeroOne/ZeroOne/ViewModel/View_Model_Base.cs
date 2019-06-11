@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Time.View_model
+namespace ZeroOne.ViewModel
 {
     public abstract class View_Model_Base : INotifyPropertyChanged
     {

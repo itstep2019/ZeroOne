@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
-using Time.View_model;
 using ZeroOne.Code;
 
 namespace ZeroOne.ViewModel
@@ -15,8 +15,11 @@ namespace ZeroOne.ViewModel
     {
         private static int counter = 0;
 
+        public static View_Model_Main ViewModel { get; set; }
+
         public TabItem()
         {
+            CloseTabCommand = new DelegateCommand(ViewModel.CloseTabCommandExecute, ViewModel.CloseTabCommandCanExecute);
             ++counter;
             Id = counter;
         }
@@ -24,16 +27,22 @@ namespace ZeroOne.ViewModel
         public int Id { get; private set; }
         public string Header { get; set; }
         public string Content { get; set; }
+        public bool IsSaved { get; set; } = false;
+
+        public ICommand CloseTabCommand { get; private set; }
     }
 
-    class View_Model_Main : View_Model_Base
+    public class View_Model_Main : View_Model_Base
     {
         public View_Model_Main()
         {
-            CloseTabCommand = new DelegateCommand(CloseTabCommandExecute, CloseTabCommandCanExecute);
+            TabItem.ViewModel = this;
+
+            
 
             Tabs.Add(new TabItem { Header = "One", Content = "One's content" });
             Tabs.Add(new TabItem { Header = "Two", Content = "Two's content" });
+            Tabs.Add(new TabItem { Header = "Three", Content = "Three content" });
         }
 
 
@@ -60,16 +69,22 @@ namespace ZeroOne.ViewModel
 
         #region Commands
 
-        public ICommand CloseTabCommand { get; private set; }
+        
        
-        void CloseTabCommandExecute(object obj)
+        public void CloseTabCommandExecute(object obj)
         {
             int id = (int)obj;
 
-            var sel = Tabs.Select(t => t.Id == id).Single();
+            var sel = Tabs.Where(t => t.Id == id).First();
+            Tabs.Remove(sel);
 
+            if (Tabs.Count == 0)
+            {
+                Tabs.Add(new TabItem() { Header = "Новый документ" });
+                SelectedTab = Tabs.First();
+            }
         }
-        bool CloseTabCommandCanExecute(object obj)
+        public bool CloseTabCommandCanExecute(object obj)
         {
             return true;
         }
@@ -81,7 +96,7 @@ namespace ZeroOne.ViewModel
         #region Button_click_new_file
 
         private DelegateCommand _Command_new_file;
-        public ICommand Button_click_new_file
+        public ICommand CreateNewFileCommand
         {
             get
             {
@@ -94,13 +109,13 @@ namespace ZeroOne.ViewModel
         }
         private void Execute_new_file(object o)
         {
-            
+            Tabs.Add(new TabItem() { Header = "Новый документ" });
 
         }
         private bool CanExecute_new_file(object o)
         {
          
-            return false;
+            return true;
         }
 
         #endregion  Button_click_new_file

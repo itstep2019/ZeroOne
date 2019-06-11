@@ -7,7 +7,7 @@
     <ProjectGuid>{EBAE8EF7-50F6-4552-BC34-E4135B561894}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ZeroOne</RootNamespace>
-    <AssemblyName>ZeroOne</AssemblyName>
+    <AssemblyName>NotepadSharp</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
