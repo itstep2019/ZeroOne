@@ -30,7 +30,9 @@
     
 
     <Window.InputBindings>
-        <KeyBinding Command="{Binding CreateNewFileCommand}" Gesture="Ctrl+N"/>
+        <KeyBinding Command="{Binding CreateNewFileCommand}"    Gesture="Ctrl+N"/>
+        <KeyBinding Command="{Binding OpenFileCommand}"         Gesture="Ctrl+O"/>
+        <KeyBinding Command="{Binding SaveCommand}"             Gesture="Ctrl+S"/>
     </Window.InputBindings>
     
     <Grid>
@@ -43,11 +45,12 @@
             <MenuItem  Header="{DynamicResource menu_file}">
                 <MenuItem Header="{DynamicResource menu_file_new}" Command="{Binding CreateNewFileCommand}"/>
                 <MenuItem Header="{DynamicResource menu_file_open}" Command="{Binding OpenFileCommand}"/>
-                <MenuItem Header="{DynamicResource menu_file_open_t}"/>
+                
                 <Separator/>
-                <MenuItem Header="{DynamicResource menu_file_save}"/>
-                <MenuItem Header="{DynamicResource menu_file_save_as}"/>
+                <MenuItem Header="{DynamicResource menu_file_save}" Command="{Binding SaveCommand}"/>
                 <MenuItem Header="{DynamicResource menu_file_save_all}"/>
+                <MenuItem Header="{DynamicResource menu_file_save_as}"/>
+                
                 <Separator/>
                 <MenuItem Header="{DynamicResource menu_file_exit}"/>
                 
