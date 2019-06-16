@@ -29,6 +29,7 @@ namespace ZeroOne.ViewModel
         public int Id { get; private set; }
 
         public bool IsCreated { get; set; }
+        public string Path { get; set; }
         public string Header { get; set; }
         public string Content { get; set; }
         public bool IsSaved { get; set; } = true;
@@ -151,6 +152,7 @@ namespace ZeroOne.ViewModel
 
                     Tabs.Add(new TabItem() {
                         Header = Path.GetFileName(file),
+                        Path = file,
                         Content = doc.Document.Content.ToString(),
                         IsCreated = false
                     });
@@ -217,13 +219,17 @@ namespace ZeroOne.ViewModel
 
             var tab = SelectedTab;
             
-            if (tab.IsCreated == false)
+            if (tab.IsCreated)
             {
                 var path = Helpers.Dialogs.SaveFileDialog();
                 if (path != "")
                 {
 
                 }
+            }
+            else
+            {
+
             }
 
         }

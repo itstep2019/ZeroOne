@@ -87,7 +87,7 @@
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Button
                                 Height="24"
                                 Width="24"
