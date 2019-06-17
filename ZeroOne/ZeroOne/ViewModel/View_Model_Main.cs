@@ -12,42 +12,16 @@ using ZeroOne.Code;
 namespace ZeroOne.ViewModel
 {
 
-    public sealed class TabItem
-    {
-        private static int counter = 0;
-
-        public static View_Model_Main ViewModel { get; set; }
-
-        public TabItem()
-        {
-            CloseTabCommand = new DelegateCommand(ViewModel.CloseTabCommandExecute, ViewModel.CloseTabCommandCanExecute);
-
-            ++counter;
-            Id = counter;
-        }
-
-        public int Id { get; private set; }
-
-        public bool IsCreated { get; set; }
-        public string Path { get; set; }
-        public string Header { get; set; }
-        public string Content { get; set; }
-        public bool IsSaved { get; set; } = true;
-
-        public ICommand CloseTabCommand { get; private set; }
-    }
-
     public class View_Model_Main : View_Model_Base
     {
+
+        private readonly Model.Saver saver = new Model.Saver();
+
         public View_Model_Main()
         {
             TabItem.ViewModel = this;
 
-            
-
-            Tabs.Add(new TabItem { Header = "One", Content = "One's content" });
-            Tabs.Add(new TabItem { Header = "Two", Content = "Two's content" });
-            Tabs.Add(new TabItem { Header = "Three", Content = "Three content" });
+            CreateNewFileCommand.Execute(null);
         }
 
 
@@ -81,6 +55,15 @@ namespace ZeroOne.ViewModel
             int id = (int)obj;
 
             var sel = Tabs.Where(t => t.Id == id).First();
+
+            if (!sel.IsSaved)
+            {
+                if (MessageBox.Show("Сохранить этот файл?", "Закрытие вкладки", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    SaveCommand.Execute(null);
+                }
+            }
+
             Tabs.Remove(sel);
 
             if (Tabs.Count == 0)
@@ -115,6 +98,7 @@ namespace ZeroOne.ViewModel
         private void Execute_new_file(object o)
         {
             Tabs.Add(new TabItem() { Header = "Новый документ", IsCreated = true });
+            SelectedTab = Tabs.Last();
 
         }
         private bool CanExecute_new_file(object o)
@@ -171,33 +155,6 @@ namespace ZeroOne.ViewModel
 
         #endregion  Button_click_open_file
 
-        //#region Button_click_open_t_file
-
-        //private DelegateCommand _Command_open_t_file;
-        //public ICommand Button_click_open_t_file
-        //{
-        //    get
-        //    {
-        //        if (_Command_open_t_file == null)
-        //        {
-        //            _Command_open_t_file = new DelegateCommand(Execute_open_t_file, CanExecute_open_t_file);
-        //        }
-        //        return _Command_open_t_file;
-        //    }
-        //}
-        //private void Execute_open_t_file(object o)
-        //{
-
-
-        //}
-        //private bool CanExecute_open_t_file(object o)
-        //{
-
-        //    return false;
-        //}
-
-        //#endregion  Button_click_open_t_file
-
         #region Button_click_file_save
 
         private DelegateCommand _Command_file_save;
@@ -212,26 +169,24 @@ namespace ZeroOne.ViewModel
                 return _Command_file_save;
             }
         }
-        private void Execute_file_save(object o)
+        private async void Execute_file_save(object o)
         {
             if (SelectedTab == null)
                 return;
 
             var tab = SelectedTab;
             
-            if (tab.IsCreated)
+            if (tab.Path == string.Empty)
             {
-                var path = Helpers.Dialogs.SaveFileDialog();
+                var path = Helpers.Dialogs.SaveFileDialog(tab.Header);
                 if (path != "")
-                {
-
-                }
-            }
-            else
-            {
-
+                    tab.Path = path;
+                else
+                    return;
             }
 
+            await saver.Save(tab);
+            tab.IsSaved = true;
         }
         private bool CanExecute_file_save(object o)
         {

@@ -114,7 +114,7 @@
                             VerticalScrollBarVisibility="Auto"
                             TextWrapping="Wrap"                             
                             AcceptsReturn="True" 
-                            Text="{Binding Content}" />
+                            Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}" />
                     </DataTemplate>
                 </TabControl.ContentTemplate>
 
