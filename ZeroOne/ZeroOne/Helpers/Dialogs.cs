@@ -16,9 +16,9 @@ namespace ZeroOne.Helpers
             using (var open = new System.Windows.Forms.OpenFileDialog())
             {
                 open.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                open.Filter = "Текстовые документы (*.txt)|*.txt|" +
-                    "Portable Document Format (*.pdf)|*.pdf|" +
-                    "Rich Text Format (*.rtf)|*.rtf";
+                open.Filter = "Текстовые документы (*.txt)|*.txt";
+                    //"Portable Document Format (*.pdf)|*.pdf|" +
+                    //"Rich Text Format (*.rtf)|*.rtf";
 
 
                 //"Текстовые документы (*.txt)| .txt | " +
@@ -38,7 +38,26 @@ namespace ZeroOne.Helpers
             return files;
         }
 
+        public static string SaveFileDialog(string filename)
+        {
+            using (var saveDialog = new System.Windows.Forms.SaveFileDialog())
+            {
+                saveDialog.AddExtension = true;
+                saveDialog.AutoUpgradeEnabled = true;
+                saveDialog.DefaultExt = ".txt";
+                saveDialog.Title = "Сохранение файла";
+                saveDialog.Filter = "Текстовые документы (*.txt)|*.txt";
+                saveDialog.FileName = filename;
+                    //"Portable Document Format (*.pdf)|*.pdf|" +
+                    //"Rich Text Format (*.rtf)|*.rtf";
 
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    return saveDialog.FileName;
+                }
+            }
+            return "";
+        }
 
     }
 }

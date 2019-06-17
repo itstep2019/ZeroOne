@@ -43,15 +43,16 @@ namespace ZeroOne
             }
 
 
-            foreach (var str in Helpers.Dialogs.OpenFileDialog())
-            {
-                Read(str);
-            }
+            //foreach (var str in Helpers.Dialogs.OpenFileDialog())
+            //{
+            //    Read(str);
+            //}
 
             //ReadAsync("text.txt");
             //Read("text.txt");
             
-        
+
+
         }
 
         //---------------------------------OLEG------------------------------
@@ -130,30 +131,6 @@ namespace ZeroOne
             }
         }
         #endregion Tab move
-
-        private void TabWindow_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-          
-
-        }
-
-       
-
-        
-
-        //Delete tab
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //Add tab
-
-
-
-       
-      
 
     }
 }

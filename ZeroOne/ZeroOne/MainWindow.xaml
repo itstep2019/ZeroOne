@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZeroOne"
+        xmlns:viewModels="clr-namespace:ZeroOne.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="{DynamicResource Window_Title}" Height="450" Width="800"
+        MinHeight="200"
+        MinWidth="300"
+        Icon="icon.ico"
+        WindowStartupLocation="CenterScreen"
         
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -17,6 +22,19 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
+
+    <Window.DataContext>
+        <viewModels:View_Model_Main></viewModels:View_Model_Main>
+    </Window.DataContext>
+
+    
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CreateNewFileCommand}"    Gesture="Ctrl+N"/>
+        <KeyBinding Command="{Binding OpenFileCommand}"         Gesture="Ctrl+O"/>
+        <KeyBinding Command="{Binding SaveCommand}"             Gesture="Ctrl+S"/>
+    </Window.InputBindings>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="17*"/>
@@ -27,16 +45,19 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu  Grid.Row="0">
+        <Menu Grid.Row="0">
             <MenuItem  Header="{DynamicResource menu_file}">
-                <MenuItem Header="{DynamicResource menu_file_new}"/>
-                <MenuItem Header="{DynamicResource menu_file_open}"/>
-                <MenuItem Header="{DynamicResource menu_file_open_t}"/>
+                <MenuItem Header="{DynamicResource menu_file_new}" Command="{Binding CreateNewFileCommand}"/>
+                <MenuItem Header="{DynamicResource menu_file_open}" Command="{Binding OpenFileCommand}"/>
+                
                 <Separator/>
-                <MenuItem Header="{DynamicResource menu_file_save}"/>
-                <MenuItem Header="{DynamicResource menu_file_save_as}"/>
+                <MenuItem Header="{DynamicResource menu_file_save}" Command="{Binding SaveCommand}"/>
                 <MenuItem Header="{DynamicResource menu_file_save_all}"/>
-
+                <MenuItem Header="{DynamicResource menu_file_save_as}"/>
+                
+                <Separator/>
+                <MenuItem Header="{DynamicResource menu_file_exit}"/>
+                
             </MenuItem>
             <MenuItem  Header="{DynamicResource menu_search}" >
                 <MenuItem Header="{DynamicResource menu_search_next}"/>
@@ -47,73 +68,65 @@
                 <Separator/>
                 <MenuItem Header="{DynamicResource menu_search_go_to_selected}"/>
             </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_ophens}" >
-                <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
-            </MenuItem>
+
+            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+            <!--<MenuItem  Header="{DynamicResource menu_ophens}" >
+               
+            </MenuItem>-->
 
         </Menu>
 
         <Grid Grid.Row="1">
 
-            <TabControl x:Name="TabWindow" SelectionChanged="TabWindow_SelectionChanged">
-                <TabControl.Resources>
-                    <Style TargetType="TabItem">
-                        <Setter Property="AllowDrop" Value="True"/>
-                        <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
-                        <EventSetter Event="Drop" Handler="TabItem_Drop"/>
-                    </Style>
-                </TabControl.Resources>
+            <TabControl 
+                x:Name="TabWindow"
+                AllowDrop="True"
+                PreviewMouseMove="TabItem_PreviewMouseMove"
+                Drop="TabItem_Drop"
+                ItemsSource="{Binding Tabs, UpdateSourceTrigger=PropertyChanged}"
+                SelectedValue="{Binding SelectedTab, UpdateSourceTrigger=PropertyChanged}"
                 
-                
+                >
 
-                <TabItem Height="32" VerticalAlignment="Top">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Label Content="1aaaaaaaaa" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <Button Height="24"
-                                        Width="24"
-  Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-  ToolTip="MaterialDesignFloatingActionMiniLightButton" Click="Button_Click">
-                                    <materialDesign:PackIcon Kind="MicrosoftXamarin"
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button
+                                Height="24"
+                                Width="24"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                ToolTip="{DynamicResource close_tab_tooltip}"
+                                Command="{Binding CloseTabCommand}"
+                                CommandParameter="{Binding Id}"
+                                >
+                                <materialDesign:PackIcon Kind="MicrosoftXamarin"
                                         Height="20"
                                         Width="20"
                                         VerticalAlignment="Center" 
                                         HorizontalAlignment="Center"/>
-                                </Button>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
 
-                    <Grid>
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <TextBox
+                            Padding="5px"
+                            Style="{x:Null}"
+                            VerticalScrollBarVisibility="Auto"
+                            TextWrapping="Wrap"                             
+                            AcceptsReturn="True" 
+                            Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
 
-                    </Grid>
-                </TabItem>
-
-                <TabItem >
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Label Content="aaaaaaaaa"/>
-                                <Button Height="24"
-                                        Width="24"
-                                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                                    <materialDesign:PackIcon Kind="MicrosoftXamarin"
-                                        Height="20"
-                                        Width="20" 
-                                         VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Button>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-
-                    <Grid>
-
-                    </Grid>
-                </TabItem>
             </TabControl>
 
         </Grid>
+
+        
+        
     </Grid>
 </Window>
