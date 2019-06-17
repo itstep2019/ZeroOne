@@ -19,8 +19,8 @@
     <v:String x:Key="menu_file_close_all">Закрыть все вкладки</v:String>
     <v:String x:Key="menu_file_exit">Выход</v:String>
 
-    <v:String x:Key="menu_search_next">Искать дальше</v:String>
-    <v:String x:Key="menu_search_beak">Искать назада</v:String>
+    <v:String x:Key="menu_search_next">Искать далее</v:String>
+    <v:String x:Key="menu_search_beak">Искать назад</v:String>
     <v:String x:Key="menu_search_and_reples">Найти и заменить</v:String>
     <v:String x:Key="menu_search_and_select">Найти и выделить</v:String>
     <v:String x:Key="menu_search_go_to_selected">Перейти к выделенному</v:String>
