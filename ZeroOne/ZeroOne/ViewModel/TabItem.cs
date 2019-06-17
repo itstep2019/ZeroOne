@@ -15,6 +15,8 @@ namespace ZeroOne.ViewModel
         public TabItem()
         {
             CloseTabCommand = new Code.DelegateCommand(ViewModel.CloseTabCommandExecute, ViewModel.CloseTabCommandCanExecute);
+            CloseAllTabsCommand = ViewModel.CloseAllTabsCommand;
+            CloseAllTabsUnlessCurrent = ViewModel.CloseAllTabsUnlessCurrent;
 
             ++counter;
             Id = counter;
@@ -41,5 +43,8 @@ namespace ZeroOne.ViewModel
         
 
         public System.Windows.Input.ICommand CloseTabCommand { get; private set; }
+
+        public System.Windows.Input.ICommand CloseAllTabsCommand { get; private set; }
+        public System.Windows.Input.ICommand CloseAllTabsUnlessCurrent { get; private set; }
     }
 }

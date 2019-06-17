@@ -28,10 +28,9 @@
         <viewModels:View_Model_Main></viewModels:View_Model_Main>
     </Window.DataContext>
 
-    
-
     <Window.InputBindings>
         <KeyBinding Command="{Binding CreateNewFileCommand}"    Gesture="Ctrl+N"/>
+        <KeyBinding Command="{Binding CloseTabCommand}"         Gesture="Ctrl+W"                CommandParameter="{Binding Id}"/>
         <KeyBinding Command="{Binding OpenFileCommand}"         Gesture="Ctrl+O"/>
         <KeyBinding Command="{Binding SaveCommand}"             Gesture="Ctrl+S"/>
         <KeyBinding Command="{Binding SaveAsCommand}"           Gesture="Ctrl+Shift+S"/>
@@ -59,7 +58,7 @@
                 <MenuItem Header="{DynamicResource menu_file_exit}" Command="{Binding ClosewindowCommand}" CommandParameter="{Binding ElementName=wnd}"/>
                 
             </MenuItem>
-            <MenuItem  Header="{DynamicResource menu_search}" >
+            <!--<MenuItem  Header="{DynamicResource menu_search}" >
                 <MenuItem Header="{DynamicResource menu_search_next}"/>
                 <MenuItem Header="{DynamicResource menu_search_beak}"/>
                 <Separator/>
@@ -67,7 +66,7 @@
                 <MenuItem Header="{DynamicResource menu_search_and_select}"/>
                 <Separator/>
                 <MenuItem Header="{DynamicResource menu_search_go_to_selected}"/>
-            </MenuItem>
+            </MenuItem>-->
 
             <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
             <!--<MenuItem  Header="{DynamicResource menu_ophens}" >
@@ -91,7 +90,15 @@
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Content="{Binding Header, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="{DynamicResource close_tab_tooltip}" Command="{Binding CloseTabCommand}"></MenuItem>
+                                        <MenuItem Header="{DynamicResource menu_file_close_all}" Command="{Binding CloseAllTabsCommand}"></MenuItem>
+                                        <MenuItem Header="Закрыть все вкладки кроме этой" Command="{Binding CloseAllTabsUnlessCurrent}"></MenuItem>
+                                    </ContextMenu>
+                                </Label.ContextMenu>
+                            </Label>
                             <Button
                                 Height="24"
                                 Width="24"
