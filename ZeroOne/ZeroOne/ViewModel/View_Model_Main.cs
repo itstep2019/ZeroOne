@@ -198,7 +198,7 @@ namespace ZeroOne.ViewModel
         #region Button_click_file_save_as
 
         private DelegateCommand _Command_file_save_as;
-        public ICommand Button_click_file_save_as
+        public ICommand SaveAsCommand
         {
             get
             {
@@ -209,10 +209,18 @@ namespace ZeroOne.ViewModel
                 return _Command_file_save_as;
             }
         }
-        private void Execute_file_save_as(object o)
+        private async void Execute_file_save_as(object o)
         {
+            if (SelectedTab == null)
+                return;
 
+            var tab = SelectedTab;
+            var path = Helpers.Dialogs.SaveFileDialog(tab.Header);
+            if (path != "")
+                tab.Path = path;
 
+            await saver.Save(tab);
+            tab.IsSaved = true;
         }
         private bool CanExecute_file_save_as(object o)
         {
@@ -225,7 +233,7 @@ namespace ZeroOne.ViewModel
         #region Button_click_file_save_all
 
         private DelegateCommand _Command_file_save_all;
-        public ICommand Button_click_file_save_all
+        public ICommand SaveAllCommand
         {
             get
             {
@@ -238,8 +246,12 @@ namespace ZeroOne.ViewModel
         }
         private void Execute_file_save_all(object o)
         {
-
-
+            var tabs = Tabs.Where(t => t.IsSaved == false).ToArray();
+            foreach(var t in tabs)
+            {
+                SelectedTab = t;
+                SaveCommand.Execute(null);
+            }
         }
         private bool CanExecute_file_save_all(object o)
         {
@@ -248,6 +260,70 @@ namespace ZeroOne.ViewModel
         }
 
         #endregion  Button_click_file_save_all
+
+
+        #region CloseAllTabsCommand
+
+
+        private DelegateCommand _Command_file_close_all;
+        public ICommand CloseAllTabsCommand
+        {
+            get
+            {
+                if (_Command_file_close_all == null)
+                {
+                    _Command_file_close_all = new DelegateCommand(Execute_file_close_all, CanExecute_file_close_all);
+                }
+                return _Command_file_close_all;
+            }
+        }
+        private void Execute_file_close_all(object o)
+        {
+            Tabs.ToList().ForEach(tab => 
+            {
+                SelectedTab = tab;
+                CloseTabCommandExecute(tab.Id);
+            });
+        }
+        private bool CanExecute_file_close_all(object o)
+        {
+
+            return true;
+        }
+
+
+        #endregion
+
+        #region ClosewindowCommand
+
+        private DelegateCommand _Command_file_exit;
+        public ICommand CloseWindowCommand
+        {
+            get
+            {
+                if (_Command_file_exit == null)
+                {
+                    _Command_file_exit = new DelegateCommand(Execute_file_exit, CanExecute_file_exit);
+                }
+                return _Command_file_exit;
+            }
+        }
+        private void Execute_file_exit(object o)
+        {
+            MainWindow wnd = o as MainWindow;
+            if (wnd != null)
+            {
+                CloseAllTabsCommand.Execute(null);
+                wnd.Close();
+            }
+
+        }
+        private bool CanExecute_file_exit(object o)
+        {
+            return true;
+        }
+
+        #endregion
 
 
         #endregion File

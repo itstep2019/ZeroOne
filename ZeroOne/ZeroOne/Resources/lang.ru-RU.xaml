@@ -16,6 +16,7 @@
     <v:String x:Key="menu_file_save">Сохранить файл</v:String>
     <v:String x:Key="menu_file_save_as">Сохранить файл как...</v:String>
     <v:String x:Key="menu_file_save_all">Сохранить все файлы</v:String>
+    <v:String x:Key="menu_file_close_all">Закрыть все вкладки</v:String>
     <v:String x:Key="menu_file_exit">Выход</v:String>
 
     <v:String x:Key="menu_search_next">Искать дальше</v:String>

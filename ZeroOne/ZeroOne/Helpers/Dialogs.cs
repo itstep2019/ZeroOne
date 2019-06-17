@@ -45,7 +45,7 @@ namespace ZeroOne.Helpers
                 saveDialog.AddExtension = true;
                 saveDialog.AutoUpgradeEnabled = true;
                 saveDialog.DefaultExt = ".txt";
-                saveDialog.Title = "Сохранение файла";
+                saveDialog.Title = "Сохранение файла - " + filename;
                 saveDialog.Filter = "Текстовые документы (*.txt)|*.txt";
                 saveDialog.FileName = filename;
                     //"Portable Document Format (*.pdf)|*.pdf|" +
