@@ -16,10 +16,11 @@
     <v:String x:Key="menu_file_save">Save file</v:String>
     <v:String x:Key="menu_file_save_as">Save file as...</v:String>
     <v:String x:Key="menu_file_save_all">Save all files</v:String>
+    <v:String x:Key="menu_file_close_all">Close all tabs</v:String>
     <v:String x:Key="menu_file_exit">Exit</v:String>
 
     <v:String x:Key="menu_search_next">Search next</v:String>
-    <v:String x:Key="menu_search_beak">Search beak</v:String>
+    <v:String x:Key="menu_search_beak">Search back</v:String>
     <v:String x:Key="menu_search_and_reples">Search and replace</v:String>
     <v:String x:Key="menu_search_and_select">Search and select</v:String>
     <v:String x:Key="menu_search_go_to_selected">Go to selected</v:String>

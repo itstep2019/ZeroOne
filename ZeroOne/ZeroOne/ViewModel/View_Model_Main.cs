@@ -52,9 +52,15 @@ namespace ZeroOne.ViewModel
        
         public void CloseTabCommandExecute(object obj)
         {
-            int id = (int)obj;
+            TabItem sel = null;
 
-            var sel = Tabs.Where(t => t.Id == id).First();
+            if (obj != null)
+            {
+                int id = (int)obj;
+                sel = Tabs.Where(t => t.Id == id).First();
+            }
+            else
+                sel = SelectedTab;
 
             if (!sel.IsSaved)
             {
@@ -141,8 +147,9 @@ namespace ZeroOne.ViewModel
                         IsCreated = false
                     });
 
-                    SelectedTab = Tabs.Last();
+                    
                 }
+                SelectedTab = Tabs.Last();
             }
             
 
@@ -198,7 +205,7 @@ namespace ZeroOne.ViewModel
         #region Button_click_file_save_as
 
         private DelegateCommand _Command_file_save_as;
-        public ICommand Button_click_file_save_as
+        public ICommand SaveAsCommand
         {
             get
             {
@@ -209,10 +216,18 @@ namespace ZeroOne.ViewModel
                 return _Command_file_save_as;
             }
         }
-        private void Execute_file_save_as(object o)
+        private async void Execute_file_save_as(object o)
         {
+            if (SelectedTab == null)
+                return;
 
+            var tab = SelectedTab;
+            var path = Helpers.Dialogs.SaveFileDialog(tab.Header);
+            if (path != "")
+                tab.Path = path;
 
+            await saver.Save(tab);
+            tab.IsSaved = true;
         }
         private bool CanExecute_file_save_as(object o)
         {
@@ -225,7 +240,7 @@ namespace ZeroOne.ViewModel
         #region Button_click_file_save_all
 
         private DelegateCommand _Command_file_save_all;
-        public ICommand Button_click_file_save_all
+        public ICommand SaveAllCommand
         {
             get
             {
@@ -238,8 +253,12 @@ namespace ZeroOne.ViewModel
         }
         private void Execute_file_save_all(object o)
         {
-
-
+            var tabs = Tabs.Where(t => t.IsSaved == false).ToArray();
+            foreach(var t in tabs)
+            {
+                SelectedTab = t;
+                SaveCommand.Execute(null);
+            }
         }
         private bool CanExecute_file_save_all(object o)
         {
@@ -250,9 +269,111 @@ namespace ZeroOne.ViewModel
         #endregion  Button_click_file_save_all
 
 
+        #region CloseAllTabsCommand
+
+
+        private DelegateCommand _Command_file_close_all;
+        public ICommand CloseAllTabsCommand
+        {
+            get
+            {
+                if (_Command_file_close_all == null)
+                {
+                    _Command_file_close_all = new DelegateCommand(Execute_file_close_all, CanExecute_file_close_all);
+                }
+                return _Command_file_close_all;
+            }
+        }
+        private void Execute_file_close_all(object o)
+        {
+            Tabs.ToList().ForEach(tab => 
+            {
+                SelectedTab = tab;
+                CloseTabCommandExecute(tab.Id);
+            });
+        }
+        private bool CanExecute_file_close_all(object o)
+        {
+
+            return true;
+        }
+
+
+        #endregion
+
+        #region ClosewindowCommand
+
+        private DelegateCommand _Command_file_exit;
+        public ICommand CloseWindowCommand
+        {
+            get
+            {
+                if (_Command_file_exit == null)
+                {
+                    _Command_file_exit = new DelegateCommand(Execute_file_exit, CanExecute_file_exit);
+                }
+                return _Command_file_exit;
+            }
+        }
+        private void Execute_file_exit(object o)
+        {
+            MainWindow wnd = o as MainWindow;
+            if (wnd != null)
+            {
+                CloseAllTabsCommand.Execute(null);
+                wnd.Close();
+            }
+
+        }
+        private bool CanExecute_file_exit(object o)
+        {
+            return true;
+        }
+
+        #endregion
+
+
         #endregion File
 
         #endregion Menu
+
+
+
+
+
+
+        #region CloseAllTabsUnlessCurrent
+
+        private DelegateCommand _closeAllTabsUnlessCurrent;
+        public ICommand CloseAllTabsUnlessCurrent
+        {
+            get
+            {
+                if (_closeAllTabsUnlessCurrent == null)
+                {
+                    _closeAllTabsUnlessCurrent = new DelegateCommand(ExecuteCloseAllTabsUnlessCurrent, CanExecuteCloseAllTabsUnlessCurrent);
+                }
+                return _closeAllTabsUnlessCurrent;
+            }
+        }
+        private void ExecuteCloseAllTabsUnlessCurrent(object o)
+        {
+            var tabs = Tabs.Where(t => t.Id != SelectedTab.Id).ToList();
+            tabs.ForEach(t => CloseTabCommandExecute(t.Id));
+        }
+        private bool CanExecuteCloseAllTabsUnlessCurrent(object o)
+        {
+            return true;
+        }
+
+        #endregion  Button_click_open_file
+
+
+
+
+
+
+
 
         #endregion Comands
     }
